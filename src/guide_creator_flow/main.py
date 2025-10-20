@@ -16,7 +16,7 @@ from typing import List, Dict
 from pydantic import BaseModel, Field
 from crewai import LLM
 from crewai.flow.flow import Flow, listen, start
-from guide_creator_flow.crews.content_crew.content_crew import ContentCrew
+from crews.content_crew.content_crew import ContentCrew
 
 # Define Pydantic models for structured data validation and serialization
 
