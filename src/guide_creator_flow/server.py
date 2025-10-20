@@ -24,9 +24,6 @@ async def root():
 @app.post("/create-guide")
 async def create_guide(request: GuideRequest, background_tasks: BackgroundTasks):
     try:
-        # Initialize the content crew
-        crew = ContentCrew()
-        
         # Create initial guide outline
         outline = GuideOutline(
             title=f"Comprehensive Guide to {request.topic}",
@@ -36,8 +33,12 @@ async def create_guide(request: GuideRequest, background_tasks: BackgroundTasks)
             conclusion=""  # Will be filled by the crew
         )
         
+        # Initialize and process the content crew
+        crew = ContentCrew()
+        workflow = crew.process(outline)
+        
         # Run the crew task in the background
-        background_tasks.add_task(crew.run, outline)
+        background_tasks.add_task(workflow.start)
         
         return {
             "status": "Guide creation task started successfully",
