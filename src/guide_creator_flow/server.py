@@ -1,3 +1,5 @@
+# Server is not required we can directly kickoff crew from main.py with crew command  | crew flow kickoff  & crew flow plot
+
 from fastapi import FastAPI, BackgroundTasks, HTTPException
 from typing import Dict
 from pydantic import BaseModel
@@ -51,3 +53,4 @@ async def create_guide(request: GuideRequest, background_tasks: BackgroundTasks)
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=8000)
+
