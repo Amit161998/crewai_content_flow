@@ -3,7 +3,7 @@ from typing import Dict
 from pydantic import BaseModel
 from dotenv import load_dotenv
 import os
-from .main import GuideOutline, ContentCrew
+from main import GuideOutline, ContentCrew
 
 # Load environment variables
 load_dotenv()
@@ -49,4 +49,4 @@ async def create_guide(request: GuideRequest, background_tasks: BackgroundTasks)
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8000)
